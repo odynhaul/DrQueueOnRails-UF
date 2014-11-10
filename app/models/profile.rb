@@ -71,7 +71,8 @@ class Profile < ActiveRecord::Base
                               :base => ENV['LDAP_TREEBASE'],
                               :auth => {
                                   :method => :simple,
-                                  :username => account+'@'+ldap_domain[0]+'.'+ldap_domain[1]+'.'+ldap_domain[2]
+                                  :username => account+'@'+ldap_domain[0]+'.'+ldap_domain[1]+'.'+ldap_domain[2],
+                                  :password => password
                               }
 
       if ldap.bind
