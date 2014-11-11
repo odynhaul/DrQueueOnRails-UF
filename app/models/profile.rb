@@ -56,7 +56,6 @@ class Profile < ActiveRecord::Base
         myprofile.status= 'admin'
         myprofile.name= 'Admin Account'
         # User LDAP TreeBase as Domain Name
-        ldap_domain = ENV['LDAP_TREEBASE'].gsub('dc=', '').split(',')
         myprofile.email= 'admin@'+ldap_domain[1]+'.'+ldap_domain[2]
         # Save Profile
         myprofile.save
@@ -71,7 +70,7 @@ class Profile < ActiveRecord::Base
                               :base => ENV['LDAP_TREEBASE'],
                               :auth => {
                                   :method => :simple,
-                                  :username => account+'@'+ldap_domain[0]+'.'+ldap_domain[1]+'.'+ldap_domain[2],
+                                  :username => account+'@ad.ufl.edu',
                                   :password => password
                               }
 
